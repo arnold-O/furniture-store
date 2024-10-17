@@ -1,5 +1,5 @@
 import React from 'react';
-import { About, Checkout, Error, HomeLayout, Landing, Product, SingleProduct } from './pages';
+import { About, Cart, Checkout, Error, HomeLayout, Landing, Orders, Product, SingleProduct } from './pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       element:<Checkout/>
       },
       {
-      path:'oders',
+      path:'orders',
       element:<Orders/>
       }
     ]
