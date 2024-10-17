@@ -16,7 +16,7 @@ const Login = () => {
           <SubmitBtn text='Login'/>
           
           </div>
-          <button className='btn btn-secondary'>Guest User</button>
+          <button className='btn btn-secondary '>Guest User</button>
           <p className='text-center'>
             Not a member yet ? 
             <Link to='/register'  className='link link-hover link-primary capitalize ml-2'>
