@@ -1,5 +1,5 @@
 import React from 'react';
-import { About, Cart, Checkout, Error, HomeLayout, Landing, Orders, Product, SingleProduct } from './pages';
+import { About, Cart, Checkout, Error, HomeLayout, Landing, Login, Orders, Product, Register, SingleProduct } from './pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
@@ -40,13 +40,13 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'/login',
-    element:<HomeLayout/>,
+    path:'login',
+    element:<Login/>,
     errorElement:<Error/>
   },
   {
-    path:'/register',
-    element:<HomeLayout/>,
+    path:'register',
+    element:<Register/>,
     errorElement:<Error/>
   }
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import SubmitBtn from './SubmitBtn';
+import { Link } from 'react-router-dom';
 
 const FormInput = ({label, name, type, defaultValue}) => {
     return (
@@ -11,6 +13,7 @@ const FormInput = ({label, name, type, defaultValue}) => {
                 <input type={type} name={name} defaultValue={defaultValue} className="input input-bordered" />
                
            
+          
         </div>
     );
 }
