@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { CartIcon, HamburgerIcon } from './IconsComponents';
+import NavLinks from './NavLinks';
 
 const Navbar = () => {
     return (
@@ -14,15 +15,15 @@ const Navbar = () => {
                         <label tabIndex={0} className='btn btn-ghost lg:hidden '>
                         <HamburgerIcon className='h-6 w-6' />
                         </label>
-                        <ul className='menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-base-200 shadow' tabIndex={0}>
-                            navbaba
+                        <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 bg-base-200 shadow rounded-box w-52' >
+                            <NavLinks/>
                         </ul>
 
                     </div>
                 </div>
-                <div className='navbar-center hidden lg:flex'>
+                <div className='navbar-center hidden lg:flex '>
                     <ul className='menu menu-horizontal'>
-                        nav links here
+                       <NavLinks/>
                     </ul>
                 </div>
                 <div className='navbar-end'>
@@ -30,7 +31,7 @@ const Navbar = () => {
 
                     <div className='indicator'>
                     <CartIcon className='h-6 w-6' />  
-                    <span className='badge badge-sm badge-[green] indicator-item'>5</span>                
+                    <span className='badge badge-sm badge-primary indicator-item'>5</span>                
                     </div>
 
                     </NavLink>
