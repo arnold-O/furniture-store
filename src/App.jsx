@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       element:<Landing/>
       },
       {
-      path:'product',
+      path:'products',
       element:<Product/>
       },
       {
