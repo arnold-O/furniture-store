@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { CartIcon, HamburgerIcon, MoonFillIcon, SunfillIcon } from './IconsComponents';
 import NavLinks from './NavLinks';
 
+const themesValue ={
+
+    winter:'winter',
+    dracula:'dracula'
+}
+
+
 const Navbar = () => {
-    const [theme, setTheme] = useState(false);
+    // const [theme, setTheme] = useState(themesValue.winter);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || themesValue.winter);
     const handleTheme = () => {
-        setTheme(!theme)
+        const {winter, dracula} = themesValue;
+        const activeTheme = theme === winter ? dracula : winter;
+    
+        setTheme(activeTheme)
     }
+    useEffect(() => {
+        
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme)
+       
+    }, [theme]);
+  
     return (
         <nav className='bg-base-200'>
             <div className='navbar align-element'>
