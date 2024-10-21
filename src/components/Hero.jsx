@@ -15,7 +15,7 @@ const Hero = () => {
               <h1 className='max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl'>We are changing the way people shop</h1>
 
                 <p className='mt-8 max-w-xl text-lg leading-8'>
-                Most people do at least some of their initial research online, even if they ultimately choose to make their purchase at a brick-and-mortar store
+                Most people do at least some of their initial research online, even if they ultimately choose to make A-Store their go to store, we are simply the best when it comes to this.
                 </p>
                 <div className='mt-10'>
                     <Link to='/products' className='btn btn-primary uppercase text-xl font-bold'  >Our Products</Link>
