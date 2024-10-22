@@ -9,9 +9,21 @@ export const customFetch = axios.create({
 })
 
 export const formatprice = (price)=>{
-    const NairaAmount = new Intl.NumberFormat('en-NGN', {
-        currency: 'NGN',
+    const NairaAmount = new Intl.NumberFormat('en-US', {
+        currency: 'USD',
         style: 'currency',
-    }).format((price/100).toFixed(2));
+        minimumFractionDigits:2,
+    }).format(price/100)
     return NairaAmount
 }
+
+
+// export const formatprice = (price)=>{
+//     const NairaAmount = new Intl.NumberFormat('en-US', {
+//         currency: 'USD',
+//         style: 'currency',
+//         minimumFractionDigits:2,
+//         currencyDisplay:"symbol"
+//     })
+//     return NairaAmount
+// }
