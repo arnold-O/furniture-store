@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import { customFetch, formatprice } from '../utils';
 import { Link, useLoaderData } from 'react-router-dom';
 
-export const loader = async ({params})=>{
+export const loader = async ({ params }) => {
 
     const response = await customFetch(`products/${params.id}`);
 
-    return {products:response.data.data}
+    return { products: response.data.data }
 }
 
 
 const SingleProduct = () => {
-    const  [itemColor, setItemColor] = useState()
-    const {products} = useLoaderData();
-    const {image, title, price, description, colors, company}  = products.attributes;
+    const { products } = useLoaderData();
+    const { image, title, price, description, colors, company } = products.attributes;
+    const [itemColor, setItemColor] = useState(colors[0])
+    const [amount, setAmount] = useState(1);
+    const handleAmount = (e) => {
+        setAmount(e.target.value)
+
+    }
     const priceFormat = formatprice(price)
     return (
         <div>
@@ -40,18 +45,34 @@ const SingleProduct = () => {
                         <h4 className='capitalize tracking-wide font-medium'>Colors</h4>
 
                         <div className="mt-2">
-                            {colors.map((item)=>{
+                            {colors.map((item) => {
 
-                                return <button key={item} className={` badge w-6 h-6 mr-2 ${item === itemColor && 'border-2 border-secondary'}`} onClick={(()=>setItemColor(item))} style={{backgroundColor:item}}></button>
+                                return <button key={item} className={` badge w-6 h-6 mr-2 ${item === itemColor && 'border-2 border-secondary'}`} onClick={(() => setItemColor(item))} style={{ backgroundColor: item }}></button>
 
                             })}
                         </div>
 
                     </div>
+                    <div className="form-control w-full max-w-xsm">
+                        <label htmlFor='amount' className='label'>
+                            <h4 className='text-md font-medium tracking-wide'>Amount</h4>
+                        </label>
+                        <select id="amount" value={amount} onChange={handleAmount} className='select select-secondary select-bordered select-md' >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+
+                    </div>
+                    <div className="mt-8">
+                        <button className="btn btn-secondary btn-md uppercase" onClick={()=> console.log('add to cart')}>ADD to Cart</button>
+
+                    </div>
+
                 </div>
             </section>
-            
-        </div> 
+
+        </div>
     );
 }
 
