@@ -3,6 +3,7 @@ import { About, Cart, Checkout, Error, HomeLayout, Landing, Login, Orders, Produ
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import {loader as landingLoader } from './pages/Landing'
+import {loader as singleProductLoader } from './pages/SingleProduct'
 import { SinglePageError } from './components';
 
 
@@ -21,10 +22,14 @@ const router = createBrowserRouter([
       {
       path:'products',
       element:<Product/>
+      
       },
       {
       path:'products/:id',
-      element:<SingleProduct/>
+      element:<SingleProduct/>,
+      errorElement:<SinglePageError/>,
+      loader:singleProductLoader
+   
       },
       {
       path:'cart',

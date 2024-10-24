@@ -4,7 +4,7 @@ import { formatprice } from '../utils';
 
 const ProductGrid = () => {
     const {products} = useLoaderData();
-    console.log(products);
+   
    
     return (
         <div className='p-12 grid gap-4 lg:grid-cols-3 md:grid-cols-2'>

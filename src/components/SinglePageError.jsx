@@ -1,5 +1,6 @@
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { formatprice } from '../utils';
 
 const SinglePageError = () => {
     const error  = useRouteError()
