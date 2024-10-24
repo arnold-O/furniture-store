@@ -15,7 +15,7 @@ const ProductGrid = () => {
 
                 <section className=' px-4 pt-4'>
 
-                    <img src={image} alt={title} className='object rounded-xl h-64 md:h-48 w-full'  />
+                    <img src={image} alt={title} className='object-cover rounded-xl h-64 md:h-48 w-full'  />
 
                     <div className="card-body items-center text-center">
                         <h2 className='card-title capitalize tracking-wide'>{title}</h2>
