@@ -1,14 +1,22 @@
 import React from 'react';
+import { Filters, PaginationContainer, ProductsContainer } from '../components';
+import { customFetch } from '../utils';
 
-const loader = async ()=>{
-    return null
+const url = '/products'
+
+export const loader = async ()=>{
+   const response = await  customFetch(url);
+console.log(response);
+   return {products:response.data}
 }
 
 const Product = () => {
     return (
-        <div>
-            products
-        </div>
+        <>
+            <Filters/>
+            <ProductsContainer/>
+            <PaginationContainer/>
+        </>
     );
 }
 

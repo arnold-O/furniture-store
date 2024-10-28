@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import {  customFetch, formatprice } from '../utils';
-import { Link, useLoaderData } from 'react-router-dom';
+import { customFetch, formatprice } from '../utils';
 import { GenerateAmountOfItems } from '../utils/utils-index';
-customFetch
+import { Link, useLoaderData } from 'react-router-dom';
 
 export const loader = async ({ params }) => {
 
@@ -10,7 +9,6 @@ export const loader = async ({ params }) => {
 
     return { products: response.data.data }
 }
-
 
 const SingleProduct = () => {
     const { products } = useLoaderData();
@@ -60,13 +58,13 @@ const SingleProduct = () => {
                             <h4 className='text-md font-medium tracking-wide'>Amount</h4>
                         </label>
                         <select id="amount" value={amount} onChange={handleAmount} className='select select-secondary select-bordered select-md' >
-                           {GenerateAmountOfItems(5)}
-                            
+                            {GenerateAmountOfItems(5)}
+
                         </select>
 
                     </div>
                     <div className="mt-8">
-                        <button className="btn btn-secondary btn-md uppercase" onClick={()=> console.log('add to cart')}>ADD to Cart</button>
+                        <button className="btn btn-secondary btn-md uppercase" onClick={() => console.log('add to cart')}>ADD to Cart</button>
 
                     </div>
 
