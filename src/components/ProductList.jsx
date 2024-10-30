@@ -11,7 +11,7 @@ const ProductList = () => {
             {products.data.map((item)=>{
                 const {title,price,image, company} = item.attributes;
             const priceFormat =  formatprice(price)
-            return <Link className=' p-8 rounded-lg flex flex-col sm:flex-row gay-y-4 flex-wrap bg-base-300 shadow-xl hover:shadow-2xl duration-300 group' key={item.id} to={ `/products/${item.id}`}  >
+            return <Link className=' p-8 rounded-lg flex flex-col sm:flex-row gap-y-4 flex-wrap bg-base-300 shadow-xl hover:shadow-2xl duration-300 group' key={item.id} to={ `/products/${item.id}`}  >
 
                 {/* <section className=' px-4 pt-4'> */}
 
@@ -22,7 +22,7 @@ const ProductList = () => {
                         <h4 className='capitalize text-md text-neutral-content'>{company}</h4>
                     </div>
 
-                {/* </section> */}
+                <p className='font-medium ml-0 sm:ml-auto text-lg'>{priceFormat}</p>
             
             </Link>
             })}
