@@ -15,9 +15,7 @@ const FormRange = ({label, name, size}) => {
           <div  className='flex  justify-between mt-2 w-full text-xs px-2'>
             <span className='font-bold text-md'>0</span>
             <span className='font-bold text-md'>Max : {formatprice(MaxPrice)}</span>
-
           </div>
-            
         </div>
     );
 }
