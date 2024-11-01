@@ -4,9 +4,13 @@ import { customFetch } from '../utils';
 
 const url = '/products'
 
-export const loader = async ()=>{
-   const response = await  customFetch(url);
-  
+export const loader = async ({request})=>{
+ const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
+
+   const response = await  customFetch(url, {
+    params
+   });
+   console.log(response);
    return {products:response.data, meta:response.data.meta}
 }
 

@@ -17,7 +17,6 @@ const Filters = () => {
             <FormRange name='price' label='select price' size='range-sm'/>
             <FormCheckBox name='shipping' label='free shipping' size='checkbox-sm'/>
             <button className='btn btn-primary btn-sm'>search</button>
-
             <Link to='/products' className='btn btn-accent btn-sm'>reset</Link>
             
         </Form>
