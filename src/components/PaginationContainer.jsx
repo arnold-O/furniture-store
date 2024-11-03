@@ -13,9 +13,10 @@ const PaginationContainer = () => {
     const navigate = useNavigate()
 const {search, pathname} = useLocation();
 
-    const handleChange = ()=>{
+    const handleChange = (pageCount)=>{
         const searchParams = new URLSearchParams(search)
         searchParams.set('page', pageCount);
+        console.log(`${pathname}?${searchParams.toString()}`);
         navigate(`${pathname}?${searchParams.toString()}`)
         
     }
@@ -32,7 +33,7 @@ const {search, pathname} = useLocation();
                     prev
                 </button>
                 {pages.map((pageNumber)=>{
-                    return <button className={`btn btn-xs sm:btn-md border-none join-item ${pageNumber == page ? 'bg-base-300 border-base-300': ''}`}key={pageNumber} onClick={()=>handleChange(pageNumber)}>{pageNumber}</button>
+                    return <button className={`btn btn-xs sm:btn-md border-none join-item ${pageNumber === page ? 'bg-base-300 border-base-300': ''}`}key={pageNumber} onClick={()=>handleChange(pageNumber)}>{pageNumber}</button>
                 })}
                 <button className='btn btn-xs sm:btn-md join-item' onClick={()=>{
 
