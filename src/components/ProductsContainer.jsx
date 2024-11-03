@@ -3,6 +3,7 @@ import ProductGrid from './ProductGrid';
 import ProductList from './ProductList';
 import { useLoaderData } from 'react-router-dom';
 import { BsFillGridFill, BsList } from "react-icons/bs";
+import PaginationContainer from './PaginationContainer';
 
 
 const ProductsContainer = () => {
@@ -34,14 +35,12 @@ const ProductsContainer = () => {
         <div>
             {
                 totalProducts ===  0 ? (<h5 className='text-2xl mt-16'>Sorry, no product matched your search</h5> ) : layout == 'grid' ? (
-                    <ProductGrid/>) : (<ProductList/>)
-                
+                    <ProductGrid/>) : (<ProductList/>)            
             }
+            
         </div>
-   
     
-    </>
-        
+    </>     
         
     );
 }
