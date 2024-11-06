@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { toast } from "react-toastify";
 
 
 const initialState = {
-    cartItem:[],
+    cartItems:[],
     NumItemsInCart: 0,
     cartTotal:0,
     shipping:1000,
@@ -16,7 +17,21 @@ const cartSlice = createSlice({
 
     reducers:{
         addItem:(state, action)=>{
-            console.log(action.payload);
+         const {product} = action.payload;
+         const item = state.cartItems.find((item)=>item.cartID === product.cartID);
+
+         if(item){
+            item.amount += product.amount;
+         }else{
+            state.cartItems.push(product)
+         }
+         state.NumItemsInCart += product.amount;
+         state.cartTotal += product.amount * product.price;
+         state.tax = 0.1 * state.cartTotal
+         state.orderTotal = state.shipping + state.tax + state.cartTotal;
+
+         localStorage.setItem('cart', JSON.stringify(state))
+         toast.success('Item ADDED TO CART')
 
         }
     },

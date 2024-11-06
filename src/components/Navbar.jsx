@@ -13,7 +13,6 @@ const themesValue ={
 
 
 const Navbar = () => {
-    // const [theme, setTheme] = useState(themesValue.winter);
     const [theme, setTheme] = useState(localStorage.getItem('theme') || themesValue.winter);
     const handleTheme = () => {
         const {winter, dracula} = themesValue;
