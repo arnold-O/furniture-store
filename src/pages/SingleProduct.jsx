@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { customFetch, formatprice } from '../utils';
 import { GenerateAmountOfItems } from '../utils/utils-index';
 import { Link, useLoaderData } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Product from './Product';
+import { addItem } from '../features/cart/cartSlice';
 
 export const loader = async ({ params }) => {
 
@@ -10,14 +13,31 @@ export const loader = async ({ params }) => {
     return { products: response.data.data }
 }
 
+
 const SingleProduct = () => {
+    const dispatch = useDispatch();
+
     const { products } = useLoaderData();
+
     const { image, title, price, description, colors, company } = products.attributes;
     const [itemColor, setItemColor] = useState(colors[0])
     const [amount, setAmount] = useState(1);
     const handleAmount = (e) => {
         setAmount(parseInt(e.target.value))
 
+    }
+    const cartProduct = {
+        cartId:products.id + itemColor,
+        productID:products.id,
+        image,
+        title,
+        price,
+        itemColor,
+        company,
+        amount
+    }
+    const addToCart = ()=>{
+        dispatch(addItem({product:cartProduct}))
     }
     const priceFormat = formatprice(price)
     return (
@@ -64,7 +84,7 @@ const SingleProduct = () => {
 
                     </div>
                     <div className="mt-8">
-                        <button className="btn btn-secondary btn-md uppercase" onClick={() => console.log('add to cart')}>ADD to Cart</button>
+                        <button className="btn btn-secondary btn-md uppercase" onClick={addToCart}>ADD to Cart</button>
 
                     </div>
 

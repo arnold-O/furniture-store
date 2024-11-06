@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { CartIcon, HamburgerIcon, MoonFillIcon, SunfillIcon } from './IconsComponents';
 import NavLinks from './NavLinks';
+import { useSelector } from 'react-redux';
 
 const themesValue ={
 
@@ -26,6 +27,7 @@ const Navbar = () => {
         localStorage.setItem('theme', theme)
        
     }, [theme]);
+    const numItemsInCart = useSelector((state)=>state.cartState.NumItemsInCart)
   
     return (
         <nav className='bg-base-200'>
@@ -67,7 +69,7 @@ const Navbar = () => {
 
                         <div className='indicator'>
                             <CartIcon className='h-6 w-6' />
-                            <span className='badge badge-sm badge-primary indicator-item'>5</span>
+                            <span className='badge badge-sm badge-primary indicator-item'>{numItemsInCart}</span>
                         </div>
 
                     </NavLink>

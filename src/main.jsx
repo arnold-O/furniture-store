@@ -13,5 +13,5 @@ createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <ToastContainer position='top-center' autoClose={2000}/>
     <App />
-  // </Provider>,
+  </Provider>
 )
