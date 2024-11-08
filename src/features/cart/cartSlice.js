@@ -28,6 +28,7 @@ const cartSlice = createSlice({
          if(item){
             item.amount += product.amount;
          }else{
+             console.log(state.cartItems);
             state.cartItems.push(product)
          }
          state.NumItemsInCart += product.amount;
@@ -84,4 +85,5 @@ const cartSlice = createSlice({
 
 
 export const {addItem, clearCart, removeItem, editItem} = cartSlice.actions;
-export default cartSlice.reducer
+export default cartSlice.reducer;
+

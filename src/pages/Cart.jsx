@@ -15,7 +15,7 @@ const Cart = () => {
 
     return (
         <div>
-          <SectionTitle text='shopping Cart'/>
+          <SectionTitle text='Shopping Cart'/>
           <div className='grid gap-8 lg:grid-cols-12 mt-8'>
             <div className='lg:col-span-8'>
                 <CartItemsList/>
@@ -30,9 +30,7 @@ const Cart = () => {
                 (<Link to='/login' className=' mt-8 btn btn-primary btn-block uppercase'>Please Login</Link>)}
 
             </div>
-
-
-
+            
           </div>
         </div>
     );
