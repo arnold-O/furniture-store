@@ -42,14 +42,35 @@ const cartSlice = createSlice({
     },
     // Clear Items
     clearCart:(state)=>{
+        localStorage.setItem('cart', JSON.stringify(initialState))
+        return initialState
     },
 
     // remove Items
     removeItem:(state, action)=>{
+        const {cartID} = action.payload
+        const product = state.cartItems.find((item)=>item.cartID == cartID);
+
+        state.cartItems = state.cartItems.filter((item)=>item.cartId !==cartID)
+        state.NumItemsInCart -= product.amount;
+        state.cartTotal -= product.price * product.amount;
+        state.tax = 0.1 * state.cartTotal
+        state.orderTotal = state.shipping + state.tax + state.cartTotal;
+        localStorage.setItem('cart', JSON.stringify(state))
+        toast.success('Item Removed')
         
     },
     // edit item
     editItem:(state, action)=>{
+        const {cartID, amount} = action.payload;
+        const item = state.cartItems.find((item)=>item.cartID ===  cartID);
+        state.NumItemsInCart += amount - item.amount;
+        state.cartTotal += item.price * (amount -item.amount);
+        item.amount = amount;
+        state.tax = 0.1 * state.cartTotal
+        state.orderTotal = state.shipping + state.tax + state.cartTotal;
+        toast.success('Cart updated')
+
 
     },
 
