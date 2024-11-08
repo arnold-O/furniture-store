@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
 
     const user = null;
-    const numItemsInCart = useSelector((state)=>state.cartState.numItemsInCart);
+    const numItemsInCart = useSelector((state)=>state.cartState.NumItemsInCart);
+
 
     if(numItemsInCart === 0){
         return <SectionTitle text='Your cart is empty'/>
@@ -26,7 +27,7 @@ const Cart = () => {
                 (<Link to='/checkout' className='btn btn-primary btn-block mt-8'>
                 proceed to checkout</Link>) 
                 : 
-                (<Link to='/login' className='btn btn-primary btn-block uppercase'>Please Login</Link>)}
+                (<Link to='/login' className=' mt-8 btn btn-primary btn-block uppercase'>Please Login</Link>)}
 
             </div>
 
