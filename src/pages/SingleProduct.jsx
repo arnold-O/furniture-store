@@ -37,7 +37,7 @@ const SingleProduct = () => {
         amount
     }
     const addToCart = ()=>{
-        dispatch(addItem({product:cartProduct}))
+        dispatch(addItem({product:cartProduct}));
     }
     const priceFormat = formatprice(price)
     return (
@@ -81,7 +81,6 @@ const SingleProduct = () => {
                             {GenerateAmountOfItems(5)}
 
                         </select>
-
                     </div>
                     <div className="mt-8">
                         <button className="btn btn-secondary btn-md uppercase" onClick={addToCart}>ADD to Cart</button>

@@ -39,8 +39,8 @@ const cartSlice = createSlice({
          localStorage.setItem('cart', JSON.stringify(state))
          toast.success('Item ADDED TO CART')
 
-        }
-    },
+        },
+  
     // Clear Items
     clearCart:(state)=>{
         localStorage.setItem('cart', JSON.stringify(initialState))
@@ -50,9 +50,9 @@ const cartSlice = createSlice({
     // remove Items
     removeItem:(state, action)=>{
         const {cartID} = action.payload
-        const product = state.cartItems.find((item)=>item.cartID == cartID);
+        const product = state.cartItems.find((item)=>item.cartID === cartID);
 
-        state.cartItems = state.cartItems.filter((item)=>item.cartId !==cartID)
+        state.cartItems = state.cartItems.filter((item)=>item.cartID !== cartID)
         state.NumItemsInCart -= product.amount;
         state.cartTotal -= product.price * product.amount;
         state.tax = 0.1 * state.cartTotal
@@ -70,6 +70,7 @@ const cartSlice = createSlice({
         item.amount = amount;
         state.tax = 0.1 * state.cartTotal
         state.orderTotal = state.shipping + state.tax + state.cartTotal;
+        localStorage.setItem('cart', JSON.stringify(state))
         toast.success('Cart updated')
 
 
@@ -81,7 +82,7 @@ const cartSlice = createSlice({
         //  localStorage.setItem('cart', JSON.stringify(state))
 
     }
-})
+}  })
 
 
 export const {addItem, clearCart, removeItem, editItem} = cartSlice.actions;
