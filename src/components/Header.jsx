@@ -11,9 +11,9 @@ const Header = () => {
 
     const LogoutFunction = ()=>{
 
+        navigate('/')
         dispatch(logoutUser())
         dispatch(clearCart())
-        navigate('/login')
     }
     return (
         <header className='text-neutral-content bg-neutral py-2'>

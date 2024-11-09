@@ -13,15 +13,17 @@ const getUser = ()=>{
     return JSON.parse(localStorage.getItem('user')) || null;
 }
 
+// trouble here
 const getThemeLocal = ()=>{
     const theme = localStorage.getItem('theme') || themesValue.winter;
     document.documentElement.setAttribute('data-theme', theme)
     return theme
 }
+// trouble here
 
 const initialState = {
     user : getUser,
-    theme: getThemeLocal
+    theme: localStorage.getItem('theme') || themesValue.winter
 
 }
 const userSlice = createSlice({
@@ -32,9 +34,7 @@ const userSlice = createSlice({
         loginUser:(state, action)=>{
             const user = {...action.payload.user, token:action.payload.jwt};
             state.user = user;
-
-
-
+            localStorage.setItem('user', JSON.stringify(user) )
         },
         logoutUser:(state, action)=>{
             state.user = null
