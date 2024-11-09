@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 const NavLinks = () => {
     const user = useSelector((state)=> state.userState.user)
-    console.log(user);
     return (<div className='lg:flex gap-x-1'>
         {links.map((item)=>{
             const {text, id, url} = item

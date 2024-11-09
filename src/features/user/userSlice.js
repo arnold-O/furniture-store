@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { toast } from "react-toastify";
 
-
-
 const themesValue ={
-
     winter:'winter',
     dracula:'dracula'
 }
@@ -12,7 +9,7 @@ const themesValue ={
 const getUser = () => {
     return JSON.parse(localStorage.getItem('user')) || null;
 }
-console.log(getUser());
+
 
 // trouble here
 const getThemeLocal = ()=>{
@@ -46,10 +43,10 @@ const userSlice = createSlice({
         },
         toggleTheme:(state)=>{
             const {winter, dracula} = themesValue;
-            state.theme  = state.theme === dracula ? winter : dracula
+            state.theme  = state.theme === dracula ? winter : dracula;
 
-            document.documentElement.setAttribute('data-theme', state.theme)
-            localStorage.setItem('theme', state.theme)
+            document.documentElement.setAttribute('data-theme', state.theme);
+            localStorage.setItem('theme', state.theme);
 
 
         }
@@ -57,7 +54,5 @@ const userSlice = createSlice({
     }
 })
 
-
-
 export const {loginUser, logoutUser, toggleTheme} = userSlice.actions;
-export default userSlice.reducer;
+export default userSlice.reducer; 
