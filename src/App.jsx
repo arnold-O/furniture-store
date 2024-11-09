@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {loader as landingLoader } from './pages/Landing'
 import {loader as singleProductLoader } from './pages/SingleProduct';
 import {loader as productLoader } from './pages/Product';
+import {action as registerAction } from './pages/Register';
 import { SinglePageError } from './components';
 
 
@@ -59,7 +60,8 @@ const router = createBrowserRouter([
   {
     path:'register',
     element:<Register/>,
-    errorElement:<Error/>
+    errorElement:<Error/>,
+    action:registerAction
   }
 
 ])

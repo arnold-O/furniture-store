@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
-    const user = null;
+    ;
     const numItemsInCart = useSelector((state)=>state.cartState.NumItemsInCart);
+    const user = useSelector((state)=>state.userState.user);
 
 
     if(numItemsInCart === 0){
@@ -24,7 +25,7 @@ const Cart = () => {
             <div className='lg:col-span-4'>
                 <CartTotals/>
                 {user ? 
-                (<Link to='/checkout' className='btn btn-primary btn-block mt-8'>
+                (<Link to='/checkout' className='btn btn-primary btn-block mt-8 capitalize'>
                 proceed to checkout</Link>) 
                 : 
                 (<Link to='/login' className=' mt-8 btn btn-primary btn-block uppercase'>Please Login</Link>)}
