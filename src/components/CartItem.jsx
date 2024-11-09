@@ -51,8 +51,6 @@ const CartItem = ({cartItem}) => {
                 {formatprice(price)}
 
             </p>
-
-         
            
         </main>
     );
