@@ -9,7 +9,11 @@ const initialState = {
     user : {username:'arnold best'},
     theme:'dracula'
 }
+const themesValue ={
 
+    winter:'winter',
+    dracula:'dracula'
+}
 const userSlice = createSlice({
     name:'user',
     initialState,
@@ -22,6 +26,11 @@ const userSlice = createSlice({
 
         },
         toggleTheme:(state)=>{
+            const {winter, dracula} = themesValue;
+            state.theme  = state.theme === dracula ? winter : dracula
+
+            document.documentElement.setAttribute('data-theme', state.theme)
+            localStorage.setItem('theme', state.theme)
 
 
         }
@@ -31,5 +40,5 @@ const userSlice = createSlice({
 
 
 
-export const {loginUser, logoutUser, toggleTheme} = cartSlice.actions;
+export const {loginUser, logoutUser, toggleTheme} = userSlice.actions;
 export default userSlice.reducer;

@@ -1,31 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
 import { CartIcon, HamburgerIcon, MoonFillIcon, SunfillIcon } from './IconsComponents';
+import { toggleTheme } from '../features/user/userSlice';
 import NavLinks from './NavLinks';
 import { useSelector } from 'react-redux';
 
-const themesValue ={
-
-    winter:'winter',
-    dracula:'dracula'
-}
-
-
 const Navbar = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || themesValue.winter);
+   const dispatch = useDispatch()
+   
     const handleTheme = () => {
-        const {winter, dracula} = themesValue;
-        const activeTheme = theme === winter ? dracula : winter;
-    
-        setTheme(activeTheme)
+        dispatch(toggleTheme())
     }
-    useEffect(() => {
-        
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme)
-       
-    }, [theme]);
+   
     const numItemsInCart = useSelector((state)=>state.cartState.NumItemsInCart)
   
     return (
