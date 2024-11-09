@@ -9,7 +9,6 @@ import { loginUser } from '../features/user/userSlice';
 
 export const action = (store)=> async({request})=>{
    
-
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     try {
@@ -23,9 +22,6 @@ export const action = (store)=> async({request})=>{
         toast.error(errorMessage)
         
     }
-
-   
-
 }
 
 const Login = () => {
