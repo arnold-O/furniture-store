@@ -3,16 +3,26 @@ import { toast } from "react-toastify";
 
 
 
-
-
-const initialState = {
-    user : {username:'arnold best'},
-    theme:'dracula'
-}
 const themesValue ={
 
     winter:'winter',
     dracula:'dracula'
+}
+
+const getUser = ()=>{
+    return JSON.parse(localStorage.getItem('user')) || null;
+}
+
+const getThemeLocal = ()=>{
+    const theme = localStorage.getItem('theme') || themesValue.winter;
+    document.documentElement.setAttribute('data-theme', theme)
+    return theme
+}
+
+const initialState = {
+    user : getUser,
+    theme: getThemeLocal
+
 }
 const userSlice = createSlice({
     name:'user',
@@ -20,6 +30,9 @@ const userSlice = createSlice({
 
     reducers:{
         loginUser:(state, action)=>{
+            const user = {...action.payload.user, token:action.payload.jwt};
+            state.user = user;
+
 
 
         },

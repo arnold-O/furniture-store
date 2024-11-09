@@ -1,7 +1,28 @@
 import React from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import { SubmitBtn } from '../components';
+import { customFetch } from '../utils';
+import { toast } from 'react-toastify';
+
+export const action = (store)=> async({request})=>{
+   
+
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+        const response = await customFetch.post('/auth/local', data);
+       store.dispatch(loginUser(response.data))
+        toast.success('login successfully');
+       
+        redirect('/')
+    } catch (error) {
+        
+    }
+
+    return null
+
+}
 
 const Login = () => {
     return (<section className='grid h-screen place-items-center'>
@@ -24,8 +45,6 @@ const Login = () => {
             
             </Link>
            </p>
-
-
         </Form>
 
     </section>
