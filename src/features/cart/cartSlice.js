@@ -28,7 +28,6 @@ const cartSlice = createSlice({
          if(item){
             item.amount += product.amount;
          }else{
-             console.log(state.cartItems);
             state.cartItems.push(product)
          }
          state.NumItemsInCart += product.amount;

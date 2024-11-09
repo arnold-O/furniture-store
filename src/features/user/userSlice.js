@@ -21,8 +21,12 @@ const userSlice = createSlice({
     reducers:{
         loginUser:(state, action)=>{
 
+
         },
         logoutUser:(state, action)=>{
+            state.user = null
+            localStorage.removeItem('user')
+            toast.success('User logout successfully')
 
         },
         toggleTheme:(state)=>{
