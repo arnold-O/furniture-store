@@ -8,6 +8,7 @@ const Header = () => {
     const navigate  = useNavigate();
     const dispatch = useDispatch()
     const user = useSelector((state)=> state.userState.user);
+   
 
     const LogoutFunction = ()=>{
 
@@ -19,15 +20,15 @@ const Header = () => {
         <header className='text-neutral-content bg-neutral py-2'>
 
             <div className='flex justify-center align-element sm:justify-end'>
-                {user ? <div className='flex items-center gap-x-2 sm:gap-x-8'>
+                {user ? (<div className='flex items-center gap-x-2 sm:gap-x-8'>
                     <p className='text-xs sm:text-sm capitalize'>hello {user.username}</p>
                     <button className='btn btn-xs btn-outline btn-primary' onClick={LogoutFunction}>logout</button>
-                </div> : 
+                </div>) : ( 
 
                 <div className='flex gap-x-6 justify-center items-center'>
                     <Link to='/login' className='link link-hover text-xs sm:text-sm'>Sign In / Guest</Link>
-                    <Link to='/register' className='link link-hover text-xs sm:text-sm'>Create Accountt</Link>
-                </div>
+                    <Link to='/register' className='link link-hover text-xs sm:text-sm'>Create Account</Link>
+                </div>)
                 }
             </div>
             

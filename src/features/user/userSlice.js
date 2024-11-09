@@ -9,9 +9,10 @@ const themesValue ={
     dracula:'dracula'
 }
 
-const getUser = ()=>{
+const getUser = () => {
     return JSON.parse(localStorage.getItem('user')) || null;
 }
+console.log(getUser());
 
 // trouble here
 const getThemeLocal = ()=>{
@@ -22,8 +23,8 @@ const getThemeLocal = ()=>{
 // trouble here
 
 const initialState = {
-    user : getUser,
-    theme: localStorage.getItem('theme') || themesValue.winter
+    user : getUser(),
+    theme:getThemeLocal()
 
 }
 const userSlice = createSlice({
@@ -40,6 +41,7 @@ const userSlice = createSlice({
             state.user = null
             localStorage.removeItem('user')
             toast.success('User logout successfully')
+           
 
         },
         toggleTheme:(state)=>{
