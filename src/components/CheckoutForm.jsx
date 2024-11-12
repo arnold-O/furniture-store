@@ -4,9 +4,13 @@ import FormInput from './FormInput';
 import SubmitBtn from './SubmitBtn';
 
 
-const action = (store) => async()=>{
+const action = (store) => async({request})=>{
 
-    return null;
+   const formData = await request.formData();
+
+   const {name, address} = Object.fromEntries(formData);
+   store.getState().userState.user
+
 
 }
 
