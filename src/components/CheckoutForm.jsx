@@ -12,7 +12,7 @@ const action = (store) => async()=>{
 
 const CheckoutForm = () => {
     return (
-        <Form method='POST' className='flex flex-col gay-y-4'>
+        <Form method='POST' className='flex flex-col gap-y-4'>
             <h4 className='font-medium text-xl capitalize'>Shipping Information</h4>
 
             <FormInput label='first name' name='name' type='text'/>

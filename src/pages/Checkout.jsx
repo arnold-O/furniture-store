@@ -35,7 +35,6 @@ const Checkout = () => {
         <div className='grid gap-8 md:grid-cols-2 mt-8'>
             <CheckoutForm/>
             <CartTotals/>
-
         </div>
             
         </>
