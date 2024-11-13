@@ -2,14 +2,39 @@ import React from 'react';
 import { Form } from 'react-router-dom';
 import FormInput from './FormInput';
 import SubmitBtn from './SubmitBtn';
+import { customFetch, formatprice } from '../utils';
 
+export const action = (store) => async({request})=>{
+    const formData = await request.formData();
+    const {name, address} = Object.fromEntries(formData);
+    const user =  store.getState().userState.user
+    const {cartItems, NumItemsInCart, orderTotal} =  store.getState().cartState;
+  
 
-const action = (store) => async({request})=>{
+  const info = {
+    name,
+    address,
+    chargeTotal:orderTotal,
+    orderTotals:formatprice(orderTotal),
+    cartItems,
+    NumItemsInCart
+  }
 
-   const formData = await request.formData();
-
-   const {name, address} = Object.fromEntries(formData);
-   store.getState().userState.user
+try {
+    
+      const response = await  customFetch.post('orders/', {
+        data:info},
+        {
+            headers:{
+                Authorization:`Bearer ${user.token}`
+            }
+        }
+    )
+} catch (error) {
+   
+    return null
+    
+}
 
 
 }
