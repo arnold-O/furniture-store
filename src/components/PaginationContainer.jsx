@@ -40,7 +40,7 @@ const {search, pathname} = useLocation();
                     let nextPage = page + 1;
                     if(nextPage > pageCount) nextPage = 1
                     handleChange(nextPage)}}>
-                    next
+                  
                 </button>
 
             </div>

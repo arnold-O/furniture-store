@@ -2,7 +2,7 @@ import React from 'react';
 import { redirect, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { customFetch } from '../utils';
-import { SectionTitle } from '../components';
+import { OrderList, PaginationContainer, SectionTitle } from '../components';
 
 
 export const loader =(store)=> async({request})=>{
@@ -39,13 +39,16 @@ const Orders = () => {
     const {meta} = useLoaderData();
 
     if(meta.pagination < 1){
-        return <SectionTitle text='Please an Order'/>
+        return <SectionTitle text='Please make an Order'/>
     }
     return (
-        <div>
+        <>
+        <SectionTitle text='Your Orders'/>
+        <OrderList/>
+        <PaginationContainer />
 
             
-        </div>
+        </>
     );
 }
 
