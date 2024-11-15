@@ -46,7 +46,7 @@ Welcome to the **E-Commerce Furniture Store**, a sleek, modern, and responsive w
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/furniture-store.git
+   git clone https://github.com/arnold-O/furniture-store
    cd furniture-store
    ```
 
