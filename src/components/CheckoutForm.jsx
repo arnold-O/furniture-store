@@ -1,8 +1,10 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import FormInput from './FormInput';
 import SubmitBtn from './SubmitBtn';
 import { customFetch, formatprice } from '../utils';
+import { toast } from 'react-toastify';
+import { clearCart } from '../features/cart/cartSlice';
 
 export const action = (store) => async({request})=>{
 
@@ -17,7 +19,6 @@ export const action = (store) => async({request})=>{
 
     const {cartItems, NumItemsInCart, orderTotal} =  store.getState().cartState;
 
-    
 
   const info = {
     name,
@@ -38,10 +39,13 @@ try {
             }
         }
     )
-    console.log(response);
-    return null
-} catch (error) {
+   store.dispatch(clearCart())
+   toast.success('Order Place Successfully')
+return redirect('/orders')
    
+} catch (error) {
+    const errorMessage = error?.response?.data?.error?.message || 'There was an error placing your order'
+    toast.error(errorMessage);
     return null
     
 }
