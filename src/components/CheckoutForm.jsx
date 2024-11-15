@@ -13,7 +13,6 @@ export const action = (store) => async({request})=>{
     const formData = await request.formData();
     
     const {name, address} = Object.fromEntries(formData);
-    console.log(name, address);
 
     const user =  store.getState().userState.user;
 
