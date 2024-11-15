@@ -5,24 +5,32 @@ import SubmitBtn from './SubmitBtn';
 import { customFetch, formatprice } from '../utils';
 
 export const action = (store) => async({request})=>{
+
+    // getting data from checkout form
+
     const formData = await request.formData();
+    
     const {name, address} = Object.fromEntries(formData);
-    const user =  store.getState().userState.user
+    console.log(name, address);
+
+    const user =  store.getState().userState.user;
+
     const {cartItems, NumItemsInCart, orderTotal} =  store.getState().cartState;
-  
+
+    
 
   const info = {
     name,
     address,
     chargeTotal:orderTotal,
-    orderTotals:formatprice(orderTotal),
+    orderTotal:formatprice(orderTotal),
     cartItems,
-    NumItemsInCart
+    numItemsInCart:NumItemsInCart
   }
 
 try {
     
-      const response = await  customFetch.post('orders/', {
+      const response = await customFetch.post('/orders', {
         data:info},
         {
             headers:{
@@ -30,6 +38,8 @@ try {
             }
         }
     )
+    console.log(response);
+    return null
 } catch (error) {
    
     return null
